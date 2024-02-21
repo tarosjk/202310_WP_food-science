@@ -1,0 +1,13 @@
+.DS_Store
+/wp-admin
+/wp-includes
+/wp-*.php
+!/wp-config.php
+readme.html
+xmlrpc.php
+license.txt
+/wp-content/languages
+/wp-content/uploads
+/wp-content/plugins
+/wp-content/upgrade
+/wp-content/themes/twenty*
