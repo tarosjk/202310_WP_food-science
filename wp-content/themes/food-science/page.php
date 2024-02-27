@@ -12,7 +12,7 @@
 
           <div class="section_body">
             <div class="content">
-              <?php the_content(); ?>
+               <?php the_content(); ?>
             </div>
           </div>
         </div>

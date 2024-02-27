@@ -12,6 +12,9 @@ function my_theme_support()
 
   // アイキャッチ画像を有効化する
   add_theme_support('post-thumbnails');
+
+  // カスタムメニューを作成する
+  add_theme_support('menus');
 }
 add_action('after_setup_theme', 'my_theme_support');
 
