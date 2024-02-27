@@ -55,7 +55,11 @@
     <div class="section_inner">
       <header class="section_header">
         <h2 class="heading heading-primary"><span>最新情報</span>NEWS</h2>
-        <div class="section_headerBtn"><a href="" class="btn btn-more">もっと見る</a></div>
+        <?php
+        $news = get_term_by('slug', 'news', 'category');
+        $news_link = get_term_link($news, 'category');
+        ?>
+        <div class="section_headerBtn"><a href="<?= $news_link; ?>" class="btn btn-more">もっと見る</a></div>
       </header>
 
       <div class="section_body">
@@ -91,7 +95,7 @@
         <li class="infoList_item">
           <span class="infoList_prepend">メールでのお問い合わせ</span>
           <div class="infoList_btn">
-            <a href="" class="btn btn-primary">お問い合わせ</a>
+            <a href="<?= home_url('/contact/'); ?>" class="btn btn-primary">お問い合わせ</a>
           </div>
         </li>
       </ul>
