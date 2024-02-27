@@ -11,3 +11,4 @@ license.txt
 /wp-content/plugins
 /wp-content/upgrade
 /wp-content/themes/twenty*
+wp-content/db.php
