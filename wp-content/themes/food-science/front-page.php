@@ -42,7 +42,7 @@
         スパイシーでヘルシーな本場の味をお楽しみ下さい。
       </p>
       <div class="section_btn">
-        <a href="" class="btn btn-more">もっと見る</a>
+        <a href="<?= get_permalink(25); ?>" class="btn btn-more">もっと見る</a>
       </div>
     </div>
   </div>
@@ -113,7 +113,7 @@
       <div class="section_body">
         <p>〒162-0846 東京都新宿区市谷左内町21-13</p>
         <div class="section_btn">
-          <a href="#" class="btn btn-primary">アクセスはこちら</a>
+          <a href="<?= get_permalink(32); ?>" class="btn btn-primary">アクセスはこちら</a>
         </div>
       </div>
     </div>
