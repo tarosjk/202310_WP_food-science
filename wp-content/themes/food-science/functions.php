@@ -53,3 +53,34 @@ function my_pre_get_posts($query)
   }
 }
 add_action('pre_get_posts', 'my_pre_get_posts');
+
+/**
+ * パスワード保護中の投稿タイトルの「保護中」を削除
+ *
+ * @return string
+ */
+function my_protected_title()
+{
+  return '%s';
+}
+add_filter('protected_title_format', 'my_protected_title');
+
+
+function my_password_form()
+{
+  remove_filter('the_content', 'wpautop');
+
+  $wp_login_url = wp_login_url();
+
+  // ↓heredoc は $html = ""; とほぼ同義
+  // 複数行にわたる文字列の作成に便利
+  $html = <<<HTML
+  <p>パスワードを入力して下さい。</p>
+  <form action="{$wp_login_url}?action=postpass" method="post" class="post-password-form">
+    <input type="password" name="post_password">
+    <input type="submit" name="送信" value="送信">
+  </form>
+HTML;
+  return $html;
+}
+add_filter('the_password_form', 'my_password_form');
