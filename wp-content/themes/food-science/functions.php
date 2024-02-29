@@ -15,6 +15,9 @@ function my_theme_support()
 
   // カスタムメニューを作成する
   add_theme_support('menus');
+
+  // html5の出力を行う
+  add_theme_support('html5');
 }
 add_action('after_setup_theme', 'my_theme_support');
 

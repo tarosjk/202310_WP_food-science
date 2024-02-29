@@ -13,6 +13,9 @@
               <div class="content">
                 <?php the_content(); ?>
               </div>
+
+              <?php comments_template(); ?>
+
             </div>
             <footer class="post_footer">
               <?php
