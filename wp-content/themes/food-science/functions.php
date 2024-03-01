@@ -18,6 +18,8 @@ function my_theme_support()
 
   // html5の出力を行う
   add_theme_support('html5');
+
+  add_theme_support('widgets');
 }
 add_action('after_setup_theme', 'my_theme_support');
 
@@ -84,3 +86,16 @@ HTML;
   return $html;
 }
 add_filter('the_password_form', 'my_password_form');
+
+
+/**
+ * Var dump with pre tag
+ *
+ * @param mixed $content
+ * @return void
+ */
+function my_dump($content) {
+  echo '<pre>';
+  var_dump($content);
+  echo '</pre>';
+}
