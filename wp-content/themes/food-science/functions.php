@@ -19,6 +19,10 @@ function my_theme_support()
   // html5の出力を行う
   add_theme_support('html5');
 
+  // エディタースタイル
+  add_theme_support('editor-styles');
+  add_editor_style('assets/css/editor-style.css');
+
   add_theme_support('widgets');
 }
 add_action('after_setup_theme', 'my_theme_support');
@@ -88,13 +92,32 @@ HTML;
 add_filter('the_password_form', 'my_password_form');
 
 
+function my_allowed_block_types_all($allowed_blocks, $editor_context)
+{
+  $allowed_blocks = [
+    'core/heading',
+    'core/paragraph',
+    'core/list',
+  ];
+
+  // 固定ページ(画像ブロックを追加)
+  if ($editor_context->post->post_type === 'page') {
+    $allowed_blocks[] = 'core/image';
+  }
+
+  return $allowed_blocks;
+}
+add_filter('allowed_block_types_all', 'my_allowed_block_types_all', 10, 2);
+
+
 /**
  * Var dump with pre tag
  *
  * @param mixed $content
  * @return void
  */
-function my_dump($content) {
+function my_dump($content)
+{
   echo '<pre>';
   var_dump($content);
   echo '</pre>';
