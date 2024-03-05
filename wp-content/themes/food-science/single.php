@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<main>
+<main <?php if (wp_theme_has_theme_json()) : ?>class="is-full" <?php endif; ?>>
   <div class="section">
     <div class="section_inner">
       <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
