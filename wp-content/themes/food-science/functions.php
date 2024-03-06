@@ -24,6 +24,7 @@ function my_theme_support()
   add_editor_style('assets/css/editor-style.css');
 
   add_theme_support('widgets');
+  add_theme_support('automatic-feed-links');
 }
 add_action('after_setup_theme', 'my_theme_support');
 
@@ -107,7 +108,37 @@ function my_allowed_block_types_all($allowed_blocks, $editor_context)
 
   return $allowed_blocks;
 }
-add_filter('allowed_block_types_all', 'my_allowed_block_types_all', 10, 2);
+// add_filter('allowed_block_types_all', 'my_allowed_block_types_all', 10, 2);
+
+/**
+ * 管理者権限を操作する
+ *
+ * @return void
+ */
+function my_admin_init()
+{
+  // 管理者権限の取得（オブジェクト）
+  $role = get_role('administrator');
+
+  // 権限の追加
+  $role->add_cap('edit_others_foods');
+  $role->add_cap('edit_foods');
+  $role->add_cap('edit_private_foods');
+  $role->add_cap('edit_published_foods');
+  $role->add_cap('publish_foods');
+  $role->add_cap('read_private_foods');
+  // $role->add_cap('delete_others_foods');
+  // $role->add_cap('delete_foods');
+  // $role->add_cap('delete_private_foods');
+  // $role->add_cap('delete_published_foods');
+
+  // 権限の削除
+  $role->remove_cap('delete_others_foods');
+  $role->remove_cap('delete_foods');
+  $role->remove_cap('delete_private_foods');
+  $role->remove_cap('delete_published_foods');
+}
+add_action('admin_init', 'my_admin_init');
 
 
 /**
