@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<?php if (is_home()) : ?>
+<?php if (is_front_page()) : ?>
   <section class="kv">
     <div class="kv_inner">
       <h1 class="kv_title">FOOD SCIENCE<br>TOKYO</h1>
@@ -82,8 +82,16 @@
 </section>
 
 
+<?php
+$args = [
+  'post_type' => 'post',
+  'posts_per_page' => 3,
+  'category_name' => 'news',
+];
 
-<?php if (have_posts()) : ?>
+$the_query = new WP_Query($args);
+?>
+<?php if ($the_query->have_posts()) : ?>
   <section class="section">
     <div class="section_inner">
       <header class="section_header">
@@ -98,15 +106,21 @@
       <div class="section_body">
         <div class="cardList cardList-1row">
 
-          <?php while (have_posts()) : the_post(); ?>
+          <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
             <?php get_template_part('template-parts/loop', 'news'); ?>
-          <?php endwhile; ?>
+          <?php endwhile;
+          wp_reset_postdata(); ?>
 
         </div>
       </div>
     </div>
   </section>
 <?php endif; ?>
+
+<section>
+  <h2>フード</h2>
+  <div id="food-list"></div>
+</section>
 
 <section class="section section-info">
   <div class="section_inner">

@@ -11,4 +11,8 @@ license.txt
 /wp-content/plugins
 /wp-content/upgrade
 /wp-content/themes/twenty*
-wp-content/db.php
+/wp-content/db.php
+/wp-content/ai1wm-backups
+/wp-content/cache
+/wp-content/siteguard
+/wp-content/updraft

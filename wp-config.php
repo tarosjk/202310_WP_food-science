@@ -21,6 +21,8 @@
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
+define('WP_CACHE', true);
+define( 'WPCACHEHOME', '/Applications/MAMP/htdocs/food-science/wp-content/plugins/wp-super-cache/' );
 define('DB_NAME', 'food_science');
 
 /** Database username */
@@ -84,7 +86,16 @@ define('WP_DEBUG', true);
 
 /* Add any custom values between this line and the "stop editing" line. */
 
+define('DISALLOW_FILE_EDIT', true);
 
+// define('WP_ALLOW_MULTISITE', false);
+
+// define('MULTISITE', true);
+// define('SUBDOMAIN_INSTALL', false);
+// define('DOMAIN_CURRENT_SITE', 'food-science.tokyo');
+// define('PATH_CURRENT_SITE', '/');
+// define('SITE_ID_CURRENT_SITE', 1);
+// define('BLOG_ID_CURRENT_SITE', 1);
 
 /* That's all, stop editing! Happy publishing. */
 

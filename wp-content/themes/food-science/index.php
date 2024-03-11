@@ -5,7 +5,13 @@
   <section class="section">
     <div class="section_inner">
       <div class="section_header">
-        <h1 class="heading heading-primary"><span>最新情報</span>NEWS - <?php wp_title(''); ?><?php if (is_year()) : ?>年<?php endif; ?></h1>
+        <h1 class="heading heading-primary">
+          <?php if (is_archive()) : ?>
+            <span>最新情報</span>NEWS - <?php wp_title(''); ?><?php if (is_year()) : ?>年<?php endif; ?>
+          <?php elseif (is_home()) : ?>
+            <?php wp_title(''); ?>
+          <?php endif; ?>
+        </h1>
       </div>
 
       <div class="archive">

@@ -59,7 +59,7 @@ function my_pre_get_posts($query)
     return;
   }
 }
-add_action('pre_get_posts', 'my_pre_get_posts');
+// add_action('pre_get_posts', 'my_pre_get_posts');
 
 /**
  * パスワード保護中の投稿タイトルの「保護中」を削除
@@ -140,6 +140,55 @@ function my_admin_init()
 }
 add_action('admin_init', 'my_admin_init');
 
+
+function api_register_fields()
+{
+  register_rest_field(
+    'food',
+    'price',
+    [
+      'get_callback' => 'get_custom_field',
+      'update_callback' => null,
+      'schema' => null,
+    ]
+  );
+  register_rest_field(
+    'food',
+    'calorie',
+    [
+      'get_callback' => 'get_custom_field',
+      'update_callback' => null,
+      'schema' => null,
+    ]
+  );
+}
+add_action('rest_api_init', 'api_register_fields');
+
+function get_custom_field($object, $field_name, $request)
+{
+  return get_post_meta($object['id'], $field_name, true);
+}
+
+
+function my_enqueue_scripts()
+{
+  wp_enqueue_script('rest', get_template_directory_uri() . '/assets/js/rest.js');
+}
+add_action('wp_enqueue_scripts', 'my_enqueue_scripts');
+
+/**
+ * サムネイルを表示する
+ *
+ * @return void
+ */
+function display_thumbnail()
+{
+  if (has_post_thumbnail()) :
+    the_post_thumbnail('medium');
+  else :
+    echo '<img src="' . get_template_directory_uri() . '/assets/img/common/noimage.png" alt="">';
+  endif;
+}
 
 /**
  * Var dump with pre tag

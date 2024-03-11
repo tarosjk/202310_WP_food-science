@@ -12,7 +12,9 @@
   );
   wp_enqueue_style(
     'google-web-fonts',
-    'https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap'
+    'https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Noto+Sans+JP:wght@100..900&display=swap',
+    false,
+    null
   );
   wp_enqueue_script(
     'food-science-main',
